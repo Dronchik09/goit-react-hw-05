@@ -7,20 +7,16 @@ import { fetchRequest } from "../Movies-api.js";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") || null);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const handleSubmit = (value, actions) => {
-    if (value === "") return;
-    setQuery(value.search);
-    const q = searchParams.get("q");
+    if (value.search  === "") return;
     setSearchParams({ q: value.search } );
     actions.resetForm();
   };
-
   useEffect(() => {
+const query = searchParams.get("q")
     if (!query) return;
     async function moviesRequest() {
       try {
@@ -39,8 +35,7 @@ export default function MoviesPage() {
       }
     }
     moviesRequest();
-  }, [query]);
-
+  }, [searchParams]);
   return (
     <>
       <Formik initialValues={{ search: "" }} onSubmit={handleSubmit}>
@@ -54,7 +49,7 @@ export default function MoviesPage() {
       {error && <p>Something went wrong! Please try again later.</p>}
       {loading && <p>Loading...</p>}
       {movies && <MovieList list={movies} />}
-      {query && !loading && movies.length === 0 && <p>Nothing found.</p>}
+      {!loading && movies.length === 0 && <p>Nothing found.</p>}
     </>
   );
 }
