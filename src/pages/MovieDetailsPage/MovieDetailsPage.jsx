@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 import MovieDetailsContent from "../../components/MovieDetailsContent/MovieDetailsContent";
 import { fetchRequest } from "../../Movies-api";
 import css from "./MovieDetailsPage.module.css"
 import  GoBack  from "../../components/GoBack/GoBack";
 import { useRef, Suspense } from "react";
+
 
 
 export default function MovieDetailsPage(){
@@ -13,6 +14,7 @@ export default function MovieDetailsPage(){
     const [loading, setLoading] = useState(false);
     const backLinkHref = useRef(location.state ?? "/movies");
     const [error, setError] = useState(false);
+    const location = useLocation();
   
     useEffect(() => {
         async function getMovieDetails() {
