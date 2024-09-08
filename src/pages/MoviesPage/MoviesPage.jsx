@@ -1,9 +1,9 @@
 import { Formik, Form, Field } from "formik";
 import { useEffect, useState } from "react";
-import MovieList from "../components/MovieList/MovieList";
+import MovieList from "../../components/MovieList/MovieList";
 import css from "./MoviesPage.module.css";
 import { useSearchParams } from "react-router-dom";
-import { fetchRequest } from "../themoviedb-api";
+import { fetchRequest } from "../../Movies-api";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
