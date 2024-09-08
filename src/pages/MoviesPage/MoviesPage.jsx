@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import css from "./MoviesPage.module.css";
 import { useSearchParams } from "react-router-dom";
-import { fetchRequest } from "../../Movies-api";
+import { fetchRequest } from "../Movies-api.js";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,7 +16,7 @@ export default function MoviesPage() {
     if (value === "") return;
     setQuery(value.search);
     const q = searchParams.get("q");
-    setSearchParams(q );
+    setSearchParams({ q: value.search } );
     actions.resetForm();
   };
 
