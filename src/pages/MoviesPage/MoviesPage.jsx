@@ -16,7 +16,7 @@ export default function MoviesPage() {
     if (value === "") return;
     setQuery(value.search);
     const q = searchParams.get("q");
-    setSearchParams({ q: value.search });
+    setSearchParams(q );
     actions.resetForm();
   };
 
