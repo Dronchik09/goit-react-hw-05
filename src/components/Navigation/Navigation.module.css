@@ -1,0 +1,17 @@
+.link {
+    text-decoration: none;
+  }
+  
+  .active {
+    color: brown;
+  }
+.ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #000;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 10px;
+    padding: 10px;
+}
